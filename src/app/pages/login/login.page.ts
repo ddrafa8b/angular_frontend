@@ -9,6 +9,7 @@ import { IonicModule, AlertController } from '@ionic/angular';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   imports: [CommonModule, FormsModule, IonicModule],
+  standalone: true,
 })
 export class LoginPage {
   email = '';

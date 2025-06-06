@@ -7,6 +7,7 @@ import { IonButtons, IonHeader, IonToolbar, IonTitle, IonButton, IonContent, Ion
 
 @Component({
   selector: 'app-reservas',
+  standalone: true,
   templateUrl: './reservas.component.html',
   styleUrls: ['./reservas.component.scss'],
   imports: [IonButton, IonButtons, IonContent, IonHeader, IonItem, IonLabel, IonList, IonTitle, IonText, IonToolbar, CommonModule, FormsModule]

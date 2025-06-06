@@ -12,7 +12,8 @@ import { RouterModule } from '@angular/router';
   templateUrl: './reservar.component.html',
   styleUrls: ['./reservar.component.scss'],
   imports: [IonContent, IonInput, IonItem, IonLabel, IonButton, IonButtons, IonTitle, IonHeader, IonToolbar, CommonModule, FormsModule, RouterModule, IonCheckbox],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  standalone: true,
 })
 export class ReservarComponent {
   esUsuario = false;

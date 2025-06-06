@@ -1,0 +1,39 @@
+<ion-segment *ngIf="modo === 'gallery' && (esUsuario|| !(esAdmin||esArtista||esUsuario))" [(ngModel)]="segmentValue"
+  (ionChange)="setSearchMode(segmentValue)">
+  <ion-segment-button value="cuadros">Cuadros</ion-segment-button>
+  <ion-segment-button value="artistas">Artistas</ion-segment-button>
+</ion-segment>
+
+<ion-searchbar [value]="query" (ionInput)="buscar($event)" debounce="300" placeholder="Buscar...">
+</ion-searchbar>
+
+<ion-grid *ngIf="segmentValue === 'cuadros' && resultados.length > 0">
+  <ion-row>
+    <ion-col size="10" size-md="1.5" size-lg="0.75" *ngFor="let item of resultados">
+      <ion-card (click)="abrirDetalleCuadro(item)">
+        <img [src]="item.imagen" alt="Imagen del cuadro" />
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<ion-list *ngIf="modo === 'eventos' && resultados.length > 0" class="events">
+  <ion-item *ngFor="let item of resultados" (click)="abrirDetalleEvento(item)">
+    {{ item.nombre }}  <div class="fecha"> {{ item.fecha | date: 'dd/MM/yyyy' }} </div>
+  </ion-item>
+</ion-list>
+
+<ion-list *ngIf="segmentValue === 'artistas' && resultados.length > 0">
+  <ion-item *ngFor="let item of resultados" (click)="abrirModalArtista(item)">
+    <div class="info-artista">
+      <img class="art" src="../../../../assets/SVG/brush.svg" />
+      {{ item.nombre_usuario || item.nombre }}
+    </div>
+    <div class="botones" *ngIf="esUsuario">
+      <button *ngIf="!item.estaSeguido"
+        (click)="seguirArtista(item.id_usuario); $event.stopPropagation()">Seguir</button>
+      <button *ngIf="item.estaSeguido"
+        (click)="dejarDeSeguirArtista(item.id_usuario); $event.stopPropagation()">Siguiendo</button>
+    </div>
+  </ion-item>
+</ion-list>

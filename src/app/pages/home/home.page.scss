@@ -1,0 +1,126 @@
+:host {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+}
+
+ion-header,
+.admin-message {
+    position: relative;
+    height: 78vh;
+    width: 100%;
+    background: url('/assets/home_back.gif') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #F2F2E9;
+    padding: 5rem;
+    text-align: center;
+    font-weight: bold;
+    font-family: "Oswald", sans-serif;
+    overflow: hidden;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 0;
+}
+
+ion-header>*:not(.overlay) {
+    position: relative;
+    z-index: 1;
+}
+
+
+ion-title {
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.title-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 7rem;
+}
+
+.call-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    font-family: "Oswald", sans-serif;
+}
+
+button {
+    padding: 0.5rem 1.5rem;
+    border: 0.4rem solid #0D0D0D;
+    background-color: #F2F2E9;
+    color: #0D0D0D;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 13rem;
+}
+
+.home-section {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: space-around;
+
+    button {
+        align-self: center;
+        flex-grow: 0;
+        width: auto;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+
+    .info-container {
+        display: flex;
+        flex-flow: row;
+        justify-content: space-around;
+        gap: 2rem;
+        padding: 2rem;
+
+        >div {
+            flex: 1;
+        }
+
+        @media (max-width: 768px) {
+            flex-direction: column;
+            align-items: center;
+
+            >div {
+                width: 100%;
+            }
+
+            button {
+                margin-top: 1rem;
+            }
+        }
+    }
+}
+
+.home-section2 {
+    background-color: #80F6FF;
+    padding-top: 1rem;
+    color: #0D0D0D;
+    text-align: center;
+
+    .subtitle {
+        padding-bottom: 1rem;
+    }
+}

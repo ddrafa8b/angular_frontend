@@ -1,0 +1,59 @@
+:host {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    pointer-events: all;
+}
+
+.cookie-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    pointer-events: auto;
+    opacity: 0;
+}
+
+.cookie-banner {
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.85);
+    padding: 1rem 2rem;
+    text-align: center;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: #F2F2E9;
+}
+
+p {
+    width: 100%;
+}
+
+.cookie-buttons {
+    font-family: "Oswald", sans-serif;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.cookie-buttons button {
+    padding: 0.5rem 1.5rem;
+    border: 0.4rem solid #0D0D0D;
+    background-color: #F2F2E9;
+    color: #0D0D0D;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cookie-buttons button:hover {
+    background-color: #F2F2E9;
+}

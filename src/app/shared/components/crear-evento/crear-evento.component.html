@@ -1,0 +1,68 @@
+<ion-content>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Nuevo evento</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="cerrarModal()">Cerrar</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+
+  <form [formGroup]="eventoForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="stacked">Nombre del evento*</ion-label>
+      <ion-input formControlName="nombre"></ion-input>
+    </ion-item>
+    <ion-note *ngIf="eventoForm.get('nombre')?.invalid && eventoForm.get('nombre')?.touched" color="danger">
+      El nombre es obligatorio
+    </ion-note>
+
+    <ion-item>
+      <ion-label position="stacked">Descripción*</ion-label>
+      <ion-textarea rows="1" formControlName="descripcion"></ion-textarea>
+    </ion-item>
+    <ion-note *ngIf="eventoForm.get('descripcion')?.invalid && eventoForm.get('descripcion')?.touched" color="danger">
+      La descripción es obligatoria
+    </ion-note>
+
+    <ion-item>
+      <ion-label position="stacked">Fecha*</ion-label>
+      <ion-input type="date" formControlName="fecha"></ion-input>
+    </ion-item>
+    <ion-note *ngIf="eventoForm.get('fecha')?.touched && eventoForm.get('fecha')?.errors?.['required']" color="danger">
+      La fecha es obligatoria
+    </ion-note>
+    <ion-note *ngIf="eventoForm.get('fecha')?.touched && eventoForm.get('fecha')?.errors?.['fechaInvalida']"
+      color="danger">
+      La fecha debe ser hoy o posterior
+    </ion-note>
+
+    <ion-item>
+      <ion-label position="stacked">Nombre de ubicación*</ion-label>
+      <ion-input formControlName="ubicacion_nombre"></ion-input>
+    </ion-item>
+    <ion-note *ngIf="eventoForm.get('ubicacion_nombre')?.invalid && eventoForm.get('ubicacion_nombre')?.touched"
+      color="danger">
+      La ubicación es obligatoria
+    </ion-note>
+
+    <ion-item>
+      <ion-label position="stacked">URL de ubicación*</ion-label>
+      <ion-input formControlName="ubicacion_url"></ion-input>
+    </ion-item>
+    <ion-note *ngIf="eventoForm.get('ubicacion_url')?.invalid && eventoForm.get('ubicacion_url')?.touched"
+      color="danger">
+      La URL de ubicación es obligatoria
+    </ion-note>
+
+    <ion-item lines="none">
+      <ion-label>¿Permitir inscripción directa?</ion-label>
+      <ion-checkbox formControlName="permiteInscripcion" slot="end"></ion-checkbox>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" class="make" [disabled]="!eventoForm.valid">
+      Crear Evento
+    </ion-button>
+  </form>
+</ion-content>

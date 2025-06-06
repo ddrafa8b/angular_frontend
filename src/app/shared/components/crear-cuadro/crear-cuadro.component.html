@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Nuevo cuadro</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrarModal()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="cuadroForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="stacked">Título*</ion-label>
+      <ion-input formControlName="titulo"></ion-input>
+    </ion-item>
+    <ion-note *ngIf="cuadroForm.get('titulo')?.invalid && cuadroForm.get('titulo')?.touched" color="danger">
+      El título es obligatorio
+    </ion-note>
+
+    <ion-item>
+      <ion-label position="stacked">Descripción*</ion-label>
+      <ion-textarea formControlName="descripcion"></ion-textarea>
+    </ion-item>
+    <ion-note *ngIf="cuadroForm.get('descripcion')?.invalid && cuadroForm.get('descripcion')?.touched" color="danger">
+      La descripción es obligatoria
+    </ion-note>
+
+    <ion-item lines="none">
+      <ion-label>¿Reservable?</ion-label>
+      <ion-checkbox formControlName="isBookable" slot="end"></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Fecha de creación*</ion-label>
+      <ion-input type="date" formControlName="fecha_creacion"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Imagen (.jpg)*</ion-label>
+      <input type="file" accept=".jpg" (change)="onFileChange($event)" />
+    </ion-item>
+
+    <ion-note *ngIf="errorImagen" color="danger">{{ errorImagen }}</ion-note>
+
+    <ion-button expand="block" type="submit" class="make" [disabled]="!cuadroForm.valid || !imagenFile">
+      Publicar
+    </ion-button>
+  </form>
+</ion-content>

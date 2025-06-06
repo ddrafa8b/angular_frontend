@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ evento?.nombre }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrar()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <p>{{ evento?.descripcion }}</p>
+      <br>
+      <p class="date">{{ evento?.fecha | date:'longDate' }}</p>
+      <br>
+      <p>Saber más:
+        <br>
+        <a [href]="evento?.ubicacion_url" target="_blank">{{ evento?.ubicacion_nombre }}</a>
+      </p>
+      <div *ngIf="asistentes.length > 0 && (esUsuario || esArtista)" class="asistentes">
+        <h4>Asistentes</h4>
+        <ion-list>
+          <ion-item *ngFor="let artista of asistentes" (click)="abrirModalArtista(artista.id)">
+            <ion-label>{{ artista.nombre_usuario }}</ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+
+      <ion-button *ngIf="esArtista" expand="block" [ngClass]="estaAsistiendo ? 'cancelar' : 'aceptar'"
+        (click)="toggleAsistencia()">
+        {{ estaAsistiendo ? 'Cancelar asistencia' : 'Asistir' }}
+      </ion-button>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>

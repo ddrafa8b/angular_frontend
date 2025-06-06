@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mis Reservas</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrar()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list *ngIf="reservas.length; else sinReservas">
+    <ion-item *ngFor="let reserva of reservas">
+      <ion-label>
+        <h2>{{ reserva.cuadro }}</h2>
+        <p>Cliente: {{ reserva.nombre_cliente }}</p>
+        <p>Email: {{ reserva.email_cliente }}</p>
+        <p>Estado: <strong>{{ reserva.estado }}</strong></p>
+        <p *ngIf="reserva.fecha_reserva">Fecha: {{ reserva.fecha_reserva | date }}</p>
+      </ion-label>
+
+      <ion-buttons slot="end">
+        <ion-button class="cancelar" (click)="cancelarReserva(reserva.id_reserva)"
+          [disabled]="reserva.estado === 'cancelada'">
+          Cancelar
+        </ion-button>
+        <ion-button *ngIf="usuario.tipo === 'artista'" class="aceptar" (click)="confirmarReserva(reserva.id_reserva)"
+          [disabled]="reserva.estado === 'confirmada'">
+          Aceptar
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+
+  <ng-template #sinReservas>
+    <ion-text color="medium">
+      <p class="ion-text-center">No tienes reservas registradas.</p>
+    </ion-text>
+  </ng-template>
+</ion-content>

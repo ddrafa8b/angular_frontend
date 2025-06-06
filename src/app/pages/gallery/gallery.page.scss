@@ -1,0 +1,229 @@
+:host {
+  padding: 0;
+  margin: 1rem;
+  height: 100vh;
+}
+
+.gallery-section {
+  margin: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+
+  div {
+    margin-top: 4rem;
+  }
+
+  button {
+    align-self: center;
+    flex-grow: 0;
+    width: auto;
+    padding: 0.5rem 1rem;
+    margin: 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #F2F2E9;
+    color: #0D0D0D
+  }
+}
+
+.cuadro-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+  margin: 0 3rem;
+  color: #0D0D0D;
+}
+
+.artista-header {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+
+
+  span {
+    font-size: 1.2rem;
+    text-decoration: underline;
+    font-family: "Oswald", sans-serif;
+    text-transform: uppercase;
+  }
+
+  button {
+    align-self: center;
+    flex-grow: 0;
+    width: auto;
+    padding: 0.5rem 1rem;
+    margin: 0.25rem;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #F2F2E9;
+    color: #0D0D0D;
+    border: 0.2rem solid #0D0D0D;
+  }
+}
+
+.cuadro-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #F2F2E9;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  text-align: center;
+  height: 100%;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-bottom: 0.2rem solid #80F6FF;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  }
+}
+
+
+.cuadro-card img.cuadro {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+}
+
+
+.info-card {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  padding: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+.titulo {
+  width: 100%;
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-family: "Oswald", sans-serif;
+}
+
+.like-comentario {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.like-icon {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+
+.comentario-destacado {
+  font-size: 0.9rem;
+  text-align: left;
+  color: #0D0D0D;
+}
+
+.ver-mas {
+  margin-top: 1rem;
+  text-align: center;
+  align-self: center;
+  text-decoration: underline;
+  cursor: pointer;
+  color: #007BFF;
+  font-weight: 500;
+}
+
+.gallery-section_users>p,
+span {
+  cursor: pointer;
+}
+
+.galeria-artista {
+  .barra-superior {
+    margin-bottom: 1rem;
+
+    ion-button {
+      width: 100%;
+      --background: #80F6FF;
+      font-weight: bolder;
+    }
+  }
+}
+
+.cuadro-lista-artist {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cuadro-fila {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  border: 1px solid #BFBFBF;
+  border-radius: 12px;
+  padding: 1rem;
+  background: #F2F2E9;
+  color: #0D0D0D;
+}
+
+.imagen-cuadro {
+  width: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.info-cuadro {
+  flex: 1;
+}
+
+.comentarios {
+  margin-top: 1rem;
+
+  .comentarios-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+
+    p {
+      margin: 0;
+    }
+
+    ion-button {
+      margin: 0;
+    }
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.25rem 0;
+      list-style: none;
+      color: #0D0D0D;
+
+      .borrar-comentario {
+        background: transparent;
+        border: none;
+        color: red;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+    }
+  }
+}

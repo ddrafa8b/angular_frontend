@@ -1,0 +1,34 @@
+<ion-content class="edit-container">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Editar Perfil</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="cerrar()">Cerrar</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <div>
+    <ion-item>
+      <ion-label position="stacked">Email</ion-label>
+      <ion-input [(ngModel)]="email" type="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Nombre de usuario</ion-label>
+      <ion-input [(ngModel)]="nombre_usuario"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="usuario?.tipo === 'artista'">
+      <ion-label position="stacked">Nombre real</ion-label>
+      <ion-input [(ngModel)]="nombre"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="usuario?.tipo === 'artista'">
+      <ion-label position="stacked">Biografía</ion-label>
+      <ion-textarea rows="3" [(ngModel)]="biografia"></ion-textarea>
+    </ion-item>
+
+    <ion-button expand="block" class="make" (click)="guardarCambios()">Guardar</ion-button>
+  </div>
+</ion-content>

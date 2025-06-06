@@ -1,0 +1,51 @@
+:host {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+}
+
+ion-title {
+    padding: 1rem;
+    font-family: "Oswald", sans-serif;
+}
+
+.make {
+    margin-top: 1rem;
+    --background: #F2F2E9;
+    --color: #0D0D0D;
+}
+
+.make:hover {
+    margin-top: 1rem;
+    --background: #0D0D0D;
+    --color: #F2F2E9;
+}
+
+ion-item {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+ion-item:first-child {
+    margin-top: 0;
+}
+
+ion-text {
+    margin-top: 1rem;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding-top: 3rem;
+}
+
+ion-button {
+    margin-top: 1rem;
+}

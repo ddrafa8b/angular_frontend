@@ -1,0 +1,23 @@
+<ion-content [fullscreen]="true">
+    <ion-grid>
+        <ion-row>
+            <ion-col class="header" [ngClass]="{
+        'with-nav': !isProfileRoute() || isMobileMenuOpen,
+        'no-nav': isProfileRoute() && !isMobileMenuOpen
+      }">
+                <app-header (menuStatus)="onMobileMenuToggle($event)"></app-header>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col class="body" [ngClass]="{
+        'with-nav': !isProfileRoute() || isMobileMenuOpen,
+        'no-nav': isProfileRoute() && !isMobileMenuOpen
+      }">
+                <router-outlet></router-outlet>
+                <app-footer></app-footer>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <app-cookies-firts *ngIf="showCookies" (closed)="handleCookiesClosed()"></app-cookies-firts>
+</ion-content>

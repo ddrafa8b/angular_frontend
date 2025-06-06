@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Iniciar sesión / Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div class="block">
+  <ion-text color="success" *ngIf="esAdmin">Actualmente logueado como Administrador</ion-text>
+  <div>
+    <ion-item>
+      <ion-label position="stacked">Email</ion-label>
+      <ion-input [(ngModel)]="email" type="email" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
+      </ion-input>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label position="stacked">Clave</ion-label>
+      <ion-input [(ngModel)]="clave" type="password" required></ion-input>
+    </ion-item>
+
+    <div *ngIf="modoRegistro">
+      <ion-item>
+        <ion-label position="stacked">Nombre de usuario</ion-label>
+        <ion-input [(ngModel)]="nombre_usuario" type="text"></ion-input>
+      </ion-item>
+    </div>
+
+    <ion-button expand="full" class="make" (click)="iniciarSesion()">
+      {{ modoRegistro ? 'Registrar usuario' : 'Iniciar sesión' }}
+    </ion-button>
+
+    <ion-button fill="clear" size="small" (click)="alternarModo()">
+      {{ modoRegistro ? '¿Ya tienes cuenta? Inicia sesión' : '¿No tienes cuenta? Crea una' }}
+    </ion-button>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ cuadroCompleto?.titulo }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button *ngIf="cuadroCompleto?.isBookable && (!esAdmin && !esArtista)" (click)="abrirModalReservar()">
+        Reservar obra
+      </ion-button>
+      <ion-button (click)="cerrar()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<div class="modal-content" *ngIf="cuadroCompleto">
+  <div class="modal-img">
+    <img [src]="'data:image/png;base64,' + cuadroCompleto.imagen_base64" alt="{{ cuadroCompleto.titulo }}" />
+  </div>
+
+  <div class="modal-details">
+    <div class="artist-row">
+      <div class="artist-name" (click)="abrirModalArtista(cuadroCompleto.id_artista)">
+        {{ cuadroCompleto.nombre_artista }}
+      </div>
+      <button *ngIf="esUsuario"
+        (click)="cuadroCompleto.estaSeguido ? dejarDeSeguirArtista(cuadroCompleto.id_artista) : seguirArtista(cuadroCompleto.id_artista)">
+        {{ cuadroCompleto.estaSeguido ? 'Siguiendo' : 'Seguir' }}
+      </button>
+    </div>
+    <p>{{ cuadroCompleto.descripcion }}</p>
+    <div *ngIf="esUsuario">
+      <div class="modal-comentarios">
+        <ng-container>
+          <ul *ngIf="cuadroCompleto.comentarios?.length > 0; else sinComentarios">
+            <li *ngFor="let c of cuadroCompleto.comentarios">
+              <div class="comentario-texto">{{ c.comentario }}</div>
+              <div class="comentario-fecha">
+                {{ c.nombre_usuario }} · {{ formatoFechaComentario(c.fecha) }}
+              </div>
+            </li>
+
+
+          </ul>
+          <ng-template #sinComentarios>
+            <p>No hay comentarios todavía.</p>
+          </ng-template>
+        </ng-container>
+      </div>
+
+      <div *ngIf="esUsuario" class="comentario-input">
+        <ion-input [(ngModel)]="nuevoComentario" placeholder="Comenta..."></ion-input>
+        <button (click)="publicarComentario()">Publicar</button>
+      </div>
+    </div>
+    <div *ngIf="!esUsuario && !esArtista && !esAdmin">
+      <p>Debes iniciar sesión para ver comentarios.</p>
+    </div>
+    <p class="date">{{ cuadroCompleto.fecha_creacion | date }}
+  </div>
+</div>

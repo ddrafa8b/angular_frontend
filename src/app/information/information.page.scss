@@ -1,0 +1,74 @@
+.info-navegacion {
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1.5rem 1rem;
+  background: rgba(13, 13, 13, 0.85);
+  border-bottom: 0.1rem solid #595959;
+
+  a {
+    padding: 0.6rem 1.2rem;
+    border: 0.1rem solid #595959;
+    border-radius: 0.2rem;
+    color: #F2F2E9;
+    text-decoration: none;
+    font-weight: normal;
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+    backdrop-filter: blur(3px);
+
+    &:hover {
+      background-color: #595959;
+      border-color: #80F6FF;
+      color: #FFFFFF;
+      font-weight: bold;
+    }
+  }
+}
+
+ion-buttons>img {
+  width: 40px;
+  height: 40px;
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+  border-radius: 50%;
+  background-color: #F2F2E9;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+section {
+  margin: 1rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.2rem;
+  border: 0.1rem solid #595959;
+  color: #F2F2E9;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  h2 {
+    margin-bottom: 1rem;
+    color: #80F6FF;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-bottom: 2px solid #595959;
+    padding-bottom: 0.3rem;
+    font-family: "Oswald", sans-serif;
+  }
+
+  p {
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    font-size: 1rem;
+    color: #F2F2E9;
+  }
+}

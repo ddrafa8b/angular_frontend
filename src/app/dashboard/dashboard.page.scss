@@ -1,0 +1,43 @@
+.header {
+  position: fixed;
+  background-color: #F2F2E9;
+  z-index: 100;
+  width: 100%;
+
+  &.with-nav {
+    height: auto;
+  }
+
+  &.no-nav {
+    height: 7rem;
+  }
+}
+
+app-cookies-firts {
+  background-color: transparent;
+}
+
+.body {
+  background-color: black;
+
+  &.with-nav {
+    margin-top: 9rem;
+
+    @media (max-width: 768px) {
+      margin-top: 9rem;
+    }
+  }
+
+  &.no-nav {
+    margin-top: 7rem;
+
+    @media (max-width: 768px) {
+      margin-top: 7rem;
+    }
+  }
+}
+
+.header,
+.body {
+  transition: height 0.3s ease, margin-top 0.3s ease;
+}

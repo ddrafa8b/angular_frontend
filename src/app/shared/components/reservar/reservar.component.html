@@ -1,0 +1,67 @@
+<ion-content class="reserva-container">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Formulario de Reserva</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="cerrarModal()">Cerrar</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <form *ngIf="!mostrarStripe" (submit)="confirmarReserva(); $event.preventDefault()">
+    <ion-item *ngIf="!esUsuario">
+      <ion-label position="floating">Nombre*</ion-label>
+      <ion-input [(ngModel)]="nombre_cliente" name="nombre" required></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="!esUsuario">
+      <ion-label position="floating">Email*</ion-label>
+      <ion-input [(ngModel)]="email_cliente" name="email" type="email" required></ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="emailInvalido" class="ion-padding-start">
+      Email no es válido.
+    </ion-text>
+
+    <ion-item>
+      <ion-label position="floating">DNI*</ion-label>
+      <ion-input [(ngModel)]="dni_cliente" name="dni" required></ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="dniInvalido" class="ion-padding-start">
+      DNI no es válido. Debe tener 8 números y una letra (ej: 12345678A).
+    </ion-text>
+
+    <ion-item>
+      <ion-checkbox slot="start" [(ngModel)]="aceptaTerminos" name="terminos"></ion-checkbox>
+      <ion-label class="ion-text-wrap">
+        He leído y acepto los
+        <a [routerLink]="['/information']" fragment="terminos" (click)="cerrarModal()">
+          Términos y Condiciones
+        </a>
+      </ion-label>
+    </ion-item>
+
+
+
+    <ion-text color="danger" *ngIf="terminosInvalido" class="ion-padding-start">
+      Debes aceptar los Términos y Condiciones para continuar.
+    </ion-text>
+
+
+
+    <ion-button class="make" expand="full" type="submit">
+      Confirmar Reserva
+    </ion-button>
+  </form>
+
+  <div *ngIf="mostrarStripe" class="paso">
+    <p>Proceda a realizar el pago</p>
+    <script async src="https://js.stripe.com/v3/buy-button.js">
+    </script>
+
+    <stripe-buy-button buy-button-id="buy_btn_1RT12VFzzjo5fw916mSHsDFM"
+      publishable-key="pk_test_51RT0voFzzjo5fw919oz96KIfdhdDhPuEH6uPLxRLnVpVEsxY09UjCQSvasCZHgIohuB88A5QJdRSDZ8WrAUqDIQp00X8bl7nBH">
+    </stripe-buy-button>
+    <button (click)="pagar()">Generar reserva</button>
+  </div>
+
+</ion-content>

@@ -1,0 +1,7 @@
+{
+  "name": "WithoutFrameFront",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

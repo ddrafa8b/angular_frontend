@@ -1,0 +1,38 @@
+<div *ngIf="!esAdmin && usuario">
+  <div class="profile-header">
+    <h2>{{ usuario.nombre_usuario }}</h2>
+    <p>{{ usuario.email }}</p>
+    <h6 *ngIf="usuario.identificador">{{ usuario.identificador }}</h6>
+  </div>
+
+  <ion-card *ngIf="usuario.biografia">
+    <ion-card-header>
+      <ion-card-title>Biografía</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ usuario.biografia }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list *ngIf="!esAdmin && usuario">
+    <ion-item button (click)="abrirEditarPerfil()">
+      <ion-label>Editar perfil</ion-label>
+    </ion-item>
+
+    <ion-item button (click)="abrirCambiarPass()">
+      <ion-label>Cambiar contraseña</ion-label>
+    </ion-item>
+
+    <ion-item button (click)="abrirReservas()">
+      <ion-label>Ver reservas</ion-label>
+    </ion-item>
+
+    <ion-item button class="close" (click)="cerrarSesion()">
+      <ion-label>Cerrar sesión</ion-label>
+    </ion-item>
+    <ion-item button class="delete" (click)="confirmarBorrarCuenta()">
+      <ion-label>Borrar cuenta</ion-label>
+    </ion-item>
+
+  </ion-list>
+</div>

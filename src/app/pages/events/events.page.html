@@ -1,0 +1,48 @@
+<div class="home-content">
+  <div class="barra-superior" *ngIf="esArtista">
+    <ion-button (click)="abrirModalCrearEvento()">Crear Evento</ion-button>
+  </div>
+  <app-searchbar modo="eventos"
+    *ngIf="esUsuario || esArtista || (!esUsuario && !esAdmin && !esArtista)"></app-searchbar>
+
+  <div class="event-section" *ngIf="!esUsuario && !esAdmin && !esArtista">
+    <div>Si quieres ver los eventos a los que asisten tus artistas favoritos, registrate y síguelos.</div>
+    <button *ngIf="!esUsuario && !esArtista" [routerLink]="'/login'">Iniciar sesión/Registrarse</button>
+  </div>
+  <div class="eventos-seguidos" *ngIf="eventosSeguidos.length > 0">
+    <div class="events-grid">
+      <div *ngFor="let evento of eventosSeguidos" class="event-card" (click)="abrirDetalleEvento(evento)">
+        <h3>{{ evento.nombre }}</h3>
+        <p>{{ evento.descripcion }}</p>
+        <p><strong>Fecha: </strong> {{ evento.fecha | date }}</p>
+        <p><strong>Ubicación: </strong> <a [href]="evento.ubicacion_url" target="_blank">{{ evento.ubicacion_nombre
+            }}</a></p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="eventos-admin" *ngIf="esAdmin">
+    <div class="events-grid">
+      <div *ngFor="let evento of todosLosEventos" class="event-card-admin">
+        <h3>{{ evento.nombre }}</h3>
+        <p>{{ evento.descripcion }}</p>
+        <p><strong>Fecha:</strong> {{ evento.fecha | date }}</p>
+        <p><strong>Ubicación:</strong><a href="{{ evento.ubicacion_url}}"> {{ evento.ubicacion_nombre }}</a></p>
+
+        <div class="asistentes">
+          <h4>Asistentes ({{ evento.asistentes?.length || 0 }}):</h4>
+          <ul>
+            <li *ngFor="let asistente of evento.asistentes">
+              {{ asistente.nombre }} ({{ asistente.email }})
+            </li>
+          </ul>
+        </div>
+
+        <ion-button color="danger" (click)="eliminarEvento(evento.id_evento)">
+          Eliminar
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</div>

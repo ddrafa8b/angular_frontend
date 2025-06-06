@@ -1,0 +1,47 @@
+<div class="header-container">
+  <div class="logo">
+    <a [routerLink]="'/home'">
+      <img src="assets/icon/favicon.png" alt="Icon" />
+    </a>
+  </div>
+
+  <div class="spacer">
+    WITHOUT FRAME
+  </div>
+
+  <div class="right-icon">
+    <a *ngIf="!userLogued" [routerLink]="'/login'">
+      <img src="assets/SVG/profile.svg" alt="Profile" />
+    </a>
+
+    <a *ngIf="userLogued && userTipo === 'usuario'" [routerLink]="'/profile'">
+      <img src="assets/SVG/profile.svg" alt="Usuario" />
+    </a>
+
+    <a *ngIf="userLogued && userTipo === 'artista'" [routerLink]="'/profile'">
+      <img class="art" src="assets/SVG/brush.svg" alt="Artista" />
+    </a>
+
+    <a *ngIf="userLogued && userTipo === 'admin'" (click)="cerrarSesion()" title="Cerrar sesión">
+      <img class="off" src="assets/SVG/power-off.svg" alt="Cerrar sesión" />
+    </a>
+  </div>
+
+</div>
+
+<div class="menu-buttons">
+  <label class="menu-toggle" (click)="toggleMenu()">
+    <img *ngIf="!isMenuOpen" src="assets/SVG/menu.svg" alt="Abrir menú" />
+    <img *ngIf="isMenuOpen" src="assets/SVG/cross.svg" alt="Cerrar menú" />
+  </label>
+</div>
+
+<div class="navigation" [class.open]="isMenuOpen || isDesktop">
+  <nav>
+    <ul class="nav-list">
+      <li><a [routerLink]="'/home'" routerLinkActive="active-link">Inicio</a></li>
+      <li><a [routerLink]="'/gallery'" routerLinkActive="active-link">Galería</a></li>
+      <li><a [routerLink]="'/events'" routerLinkActive="active-link">Eventos</a></li>
+    </ul>
+  </nav>
+</div>

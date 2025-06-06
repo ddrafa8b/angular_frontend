@@ -1,0 +1,36 @@
+ion-title {
+    font-family: "Oswald", sans-serif;
+}
+
+ion-content {
+    font-family: "Adamina", serif;
+}
+
+ion-buttons {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.cancelar {
+    width: 8rem;
+    color: red;
+}
+
+.cancelar:hover {
+    color: #0D0D0D;
+    font-weight: bold;
+    --background: #D36E70;
+}
+
+.aceptar {
+    width: 8rem;
+    color: green;
+}
+
+.aceptar:hover {
+    color: #0D0D0D;
+    font-weight: bold;
+    --background: #00BB2D;
+}

@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ artista?.nombre_artista || artista?.nombre_usuario || artista?.nombre }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrar()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ artista?.nombre }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Biografía:</strong> {{ artista?.biografia || 'No disponible' }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list *ngIf="eventos.length > 0 && esUsuario">
+    <ion-list-header>Eventos en los que participa</ion-list-header>
+    <ion-item *ngFor="let evento of eventos" (click)="abrirDetalleEvento(evento)">
+      <ion-label>
+        <h3>{{ evento.nombre }}</h3>
+        <p>{{ evento.fecha | date }}</p>
+        <p>{{ evento.ubicacion_nombre }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>Obras del artista</ion-list-header>
+    <ion-item *ngFor="let cuadro of cuadros" (click)="abrirDetalleCuadro(cuadro)">
+      <ion-thumbnail slot="start">
+        <img [src]="'data:image/webp;base64,' + cuadro?.imagen_base64" />
+      </ion-thumbnail>
+      <ion-label>
+        <h3>{{ cuadro?.titulo }}</h3>
+        <p>{{ cuadro?.descripcion }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

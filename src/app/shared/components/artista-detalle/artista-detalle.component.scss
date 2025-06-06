@@ -1,0 +1,67 @@
+ion-title {
+    font-family: "Oswald", sans-serif;
+    color: #F2F2E9;
+    text-transform: uppercase;
+}
+
+ion-content {
+    background-color: #F2F2E9;
+    color: #F2F2E9;
+}
+
+ion-card {
+    margin: 1rem 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+ion-card-title {
+    font-size: 1.4rem;
+}
+
+ion-card-content p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+ion-list-header {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #F2F2E9;
+}
+
+ion-item {
+    --background: #F2F2E9;
+    cursor: pointer;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+ion-label h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+    color: #0D0D0D;
+}
+
+ion-label p {
+    font-size: 0.95rem;
+    color: #0D0D0D;
+}
+
+ion-button {
+    font-weight: 500;
+}
+
+@media (max-width: 500px) {
+    ion-thumbnail img {
+        width: 48px;
+        height: 48px;
+    }
+
+    ion-label h3 {
+        font-size: 1rem;
+    }
+
+    ion-label p {
+        font-size: 0.85rem;
+    }
+}

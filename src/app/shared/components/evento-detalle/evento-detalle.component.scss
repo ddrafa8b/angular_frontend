@@ -1,0 +1,49 @@
+ion-title {
+    font-family: "Oswald", sans-serif;
+}
+
+p {
+    font-size: 1rem;
+    color: #F2F2E9;
+}
+
+.date {
+    font-size: 0.8rem;
+    color: #F2F2E9;
+    opacity: 0.7;
+}
+
+.asistentes {
+    margin: 1rem;
+}
+
+ion-item {
+    font-weight: bold;
+    --background: #F2F2E9;
+    color: #0D0D0D;
+    cursor: pointer;
+}
+
+.cancelar {
+    --background: transparent;
+    width: 15rem;
+    color: red;
+}
+
+.cancelar:hover {
+    color: #0D0D0D;
+    font-weight: bold;
+    --background: #D36E70;
+}
+
+.aceptar {
+    --background: transparent;
+    width: 15rem;
+    color: green;
+}
+
+.aceptar:hover {
+    color: #0D0D0D;
+    font-weight: bold;
+    --background: #00BB2D;
+}

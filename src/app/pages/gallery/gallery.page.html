@@ -1,0 +1,129 @@
+<div class="home-content">
+  <app-searchbar modo="gallery" *ngIf="esUsuario || (!esUsuario && !esAdmin && !esArtista)"></app-searchbar>
+
+  <div class="gallery-section" *ngIf="!esUsuario && !esAdmin && !esArtista">
+    <div>
+      Si quieres ver las obras publicadas de tus artistas favoritos, registrate
+      y síguelos.
+    </div>
+    <button *ngIf="!esUsuario && !esArtista" [routerLink]="'/login'">
+      Iniciar sesión/Registrarse
+    </button>
+  </div>
+
+  <div class="gallery-section_users" *ngIf="esUsuario">
+    <div class="cuadro-grid">
+      <div *ngFor="let cuadro of cuadros" class="cuadro-card">
+        <div class="artista-header">
+          <span (click)="abrirModalArtista(cuadro.id_artista)">{{ cuadro.nombre_artista }}</span>
+          <button *ngIf="!cuadro.estaSeguido" (click)="seguirArtista(cuadro.id_artista)">
+            Seguir
+          </button>
+          <button *ngIf="cuadro.estaSeguido" (click)="dejarDeSeguirArtista(cuadro.id_artista)">
+            Siguiendo
+          </button>
+        </div>
+
+        <img (click)="abrirDetalleCuadro(cuadro)" class="cuadro" [src]="'data:image/png;base64,' + cuadro.imagen_base64"
+          alt="{{ cuadro.titulo }}" />
+        <div class="info-card">
+          <h3 class="titulo">{{ cuadro.titulo }}</h3>
+
+          <div class="like-comentario">
+            <img *ngIf="cuadro.like" src="../../../assets/SVG/like.svg" alt="Like" class="like-icon"
+              (click)="toggleLike(cuadro)" />
+
+            <img *ngIf="!cuadro.like" src="../../../assets/SVG/nolike.svg" alt="No Like" class="like-icon"
+              (click)="toggleLike(cuadro)" />
+
+            <span class="comentario-destacado" *ngIf="cuadro.comentarios?.length > 0">
+              {{ cuadro.comentarios[cuadro.comentarios.length - 1].comentario }}
+            </span>
+          </div>
+
+          <a class="ver-mas" (click)="abrirDetalleCuadro(cuadro)">Ver más</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="esArtista" class="galeria-artista">
+    <div class="barra-superior">
+      <ion-button (click)="abrirModalCrearCuadro()">Añadir Cuadro</ion-button>
+    </div>
+
+    <div class="cuadro-lista-artist">
+      <div class="cuadro-fila" *ngFor="let cuadro of cuadros">
+        <img class="imagen-cuadro" [src]="'data:image/png;base64,' + cuadro.imagen_base64" alt="{{ cuadro.titulo }}" />
+
+        <div class="info-cuadro">
+          <ion-input [(ngModel)]="cuadro.titulo" (ngModelChange)="marcarEditado(cuadro)"
+            placeholder="{{ cuadro.titulo }}"></ion-input>
+          <ion-input [(ngModel)]="cuadro.descripcion" (ngModelChange)="marcarEditado(cuadro)"
+            placeholder="{{ cuadro.descripcion }}"></ion-input>
+
+          <ion-input type="date" [(ngModel)]="cuadro.fecha_creacion" (ngModelChange)="marcarEditado(cuadro)">
+          </ion-input>
+
+          <label>
+            ¿Reservable?
+            <ion-toggle [(ngModel)]="cuadro.isBookable" (ionChange)="marcarEditado(cuadro)"></ion-toggle>
+          </label>
+
+
+          <p><strong>Nº Likes:</strong> {{ cuadro.likes }}</p>
+
+          <div *ngIf="cuadro.editado">
+            <ion-button color="primary" (click)="guardarCambiosCuadro(cuadro)">Guardar Cambios</ion-button>
+          </div>
+
+          <div class="comentarios" *ngIf="cuadro.comentarios?.length > 0">
+            <div class="comentarios-header">
+              <p><strong>Comentarios</strong></p>
+              <ion-button size="small" color="danger" fill="outline" (click)="eliminarTodosComentarios(cuadro)">
+                Vaciar Caja de Comentarios
+              </ion-button>
+            </div>
+
+            <ul>
+              <li *ngFor="let c of cuadro.comentarios; let i = index">
+                <button class="borrar-comentario" (click)="eliminarComentario(cuadro, i)">X</button>
+                {{ c.comentario }}
+              </li>
+            </ul>
+          </div>
+          <div class="comentarios" *ngIf="cuadro.comentarios?.length == 0">
+            <p><strong>Sin Comentarios</strong></p>
+          </div>
+
+        </div>
+
+        <ion-button color="danger" (click)="eliminarCuadro(cuadro.id, cuadro.id_artista)"
+          style="margin-left: 10px;">Eliminar</ion-button>
+      </div>
+    </div>
+  </div>
+
+  <div class="gallery-section_admin" *ngIf="esAdmin">
+    <div class="cuadro-grid">
+      <div *ngFor="let cuadro of cuadros" class="cuadro-card">
+        <div class="artista-header">
+          <span>{{ cuadro.nombre_artista || 'Artista desconocido' }}</span>
+        </div>
+
+        <img class="cuadro" [src]="'data:image/png;base64,' + cuadro.imagen_base64" alt="{{ cuadro.titulo }}" />
+
+        <div class="info-card">
+          <h3 class="titulo">{{ cuadro.titulo }}</h3>
+          <p>{{ cuadro.descripcion }}</p>
+          <p><strong>Likes:</strong> {{ cuadro.likes }}</p>
+          <p><strong>Reservable:</strong> {{ cuadro.isBookable ? 'Sí' : 'No' }}</p>
+          <p><strong>Fecha de creación:</strong><br>{{ cuadro.fecha_creacion }}</p>
+        </div>
+        <ion-button color="danger" (click)="eliminarCuadroAdmin(cuadro.id_cuadro)" style="margin-top: 10px;">
+          Eliminar Cuadro
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</div>

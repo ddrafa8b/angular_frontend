@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Solicitud de Artista</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div>
+  <form (ngSubmit)="enviar()">
+    <ion-item>
+      <ion-label position="stacked">Nombre completo *</ion-label>
+      <ion-input [(ngModel)]="solicitud.nombre" name="nombre" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Correo electrónico *</ion-label>
+      <ion-input [(ngModel)]="solicitud.email" name="email" type="email" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Nombre artístico (opcional)</ion-label>
+      <ion-input [(ngModel)]="solicitud.nombre_artistico" name="nombre_artistico"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Descripción *</ion-label>
+      <ion-textarea [(ngModel)]="solicitud.descripcion" rows="4" name="descripcion" required></ion-textarea>
+    </ion-item>
+
+    <ion-button expand="full" type="submit" class="make">
+      Enviar Solicitud
+    </ion-button>
+  </form>
+</div>

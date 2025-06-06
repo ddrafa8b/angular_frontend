@@ -1,0 +1,62 @@
+<ion-header class="home-header" *ngIf="!esAdmin">
+  <div class="overlay"></div>
+
+  <div class="title-group">
+    <ion-title>WITHOUT FRAME</ion-title>
+    <div class="subtitle">Donde el arte se conecta contigo</div>
+  </div>
+
+  <div class="call-group" *ngIf="!esArtista">
+    <div class="subtitle">Si eres artista</div>
+    <div class="subtitle">¿Por qué no compartes tu arte?</div>
+    <button [routerLink]="'/solicitud'">Solicitud de artista</button>
+  </div>
+</ion-header>
+
+<div *ngIf="esAdmin" class="admin-message">
+  <ion-title>Eres administrador</ion-title>
+</div>
+
+<div *ngIf="!esAdmin">
+  <div class="home-section">
+    <div class="info-container">
+      <div *ngIf="!esUsuario && !esArtista">
+        <div class="subtitle">Sin Registro</div>
+        <ul>
+          <li>Reservar UN cuadro con posible retirada</li>
+          <li>Ver la galería</li>
+          <ul>
+            <li>Compartir publicaciones</li>
+          </ul>
+          <li>Ver eventos y participantes</li>
+        </ul>
+      </div>
+      <div *ngIf="!esUsuario && !esArtista">
+        <div class="subtitle">Con Registro</div>
+        <ul>
+          <li>Reservar cuadros con posible retirada</li>
+          <ul>
+            <li>Lista de reservas</li>
+          </ul>
+          <li>Ver la galería</li>
+          <ul>
+            <li>Dar LIKE y comentar</li>
+            <li>Compartir publicaciones</li>
+          </ul>
+          <li>Ver eventos y participantes</li>
+          <li>Ver artistas de la web</li>
+          <ul>
+            <li>Seguirles</li>
+            <li>Contactar por email</li>
+          </ul>
+        </ul>
+      </div>
+    </div>
+    <button *ngIf="!esUsuario && !esArtista" [routerLink]="'/login'">Iniciar sesión/Registrarse</button>
+  </div>
+</div>
+
+<div class="home-section2" *ngIf="!esAdmin">
+  <div class="subtitle">Artistas como TÚ y como YO</div>
+  <app-carrusel></app-carrusel>
+</div>

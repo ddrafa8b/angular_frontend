@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Información Legal</ion-title>
+    <ion-buttons slot="start">
+      <img (click)="volver()" src="assets/SVG/back.svg" alt="Icon" />
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true">
+  <div class="info-navegacion">
+    <a (click)="scrollTo('terminos')">Términos y Condiciones</a>
+    <a (click)="scrollTo('privacidad')">Política de Privacidad</a>
+    <a (click)="scrollTo('cookies')">Política de Cookies</a>
+    <a (click)="scrollTo('aviso')">Aviso Legal</a>
+  </div>
+
+  <section id="terminos">
+    <h2>Términos y Condiciones</h2>
+    <p>WithoutFrame es una red social para artistas donde se fomenta la creatividad, colaboración y exposición de obras
+      originales. Al acceder y utilizar nuestra plataforma, aceptas cumplir con estos Términos y Condiciones.</p>
+    <p>Como usuario, te comprometes a utilizar los servicios de forma ética y legal. No está permitido publicar
+      contenido que infrinja derechos de autor, promueva el odio, la violencia o la discriminación, ni utilizar la
+      plataforma con fines ilícitos.</p>
+    <p>WithoutFrame se reserva el derecho de eliminar contenido, suspender cuentas o tomar acciones legales cuando se
+      detecten violaciones a estos términos. Nos reservamos también el derecho de modificar estas condiciones en
+      cualquier momento, siendo tu responsabilidad revisarlas periódicamente.</p>
+    <p>Al registrarte, declaras ser mayor de edad o contar con el consentimiento de un tutor legal. Toda la información
+      proporcionada debe ser veraz y actualizada.</p>
+  </section>
+
+  <section id="privacidad">
+    <h2>Política de Privacidad</h2>
+    <p>WithoutFrame se compromete a proteger tu privacidad y garantizar el tratamiento seguro de tus datos personales.
+      Toda la información recogida se utiliza exclusivamente para fines relacionados con el funcionamiento de la
+      plataforma.</p>
+    <p>Los datos personales, como nombre, dirección de correo electrónico, contenido artístico y preferencias, se
+      recogen con tu consentimiento expreso. Nunca compartiremos tu información con terceros sin autorización previa,
+      excepto cuando lo exija la ley.</p>
+    <p>Aplicamos medidas técnicas y organizativas para garantizar la seguridad de los datos, incluyendo cifrado de
+      comunicaciones, acceso restringido y auditorías regulares.</p>
+    <p>Tienes derecho a acceder, modificar o eliminar tus datos personales en cualquier momento, enviando una solicitud
+      a nuestro equipo de privacidad a través del correo indicado al final de esta página.</p>
+  </section>
+
+  <section id="cookies">
+    <h2>Política de Cookies</h2>
+    <p>WithoutFrame utiliza cookies propias y de terceros para garantizar el correcto funcionamiento de la plataforma,
+      mejorar la experiencia del usuario, analizar patrones de navegación y ofrecer contenido personalizado.</p>
+    <p>Las cookies pueden incluir información sobre tus preferencias de idioma, ubicación aproximada, tipo de
+      dispositivo y páginas visitadas dentro de la plataforma. No recopilamos datos sensibles ni utilizamos cookies para
+      fines comerciales ajenos a WithoutFrame.</p>
+    <p>Al navegar por nuestro sitio, aceptas el uso de cookies, aunque puedes configurar tu navegador para bloquearlas
+      total o parcialmente. En ese caso, es posible que algunas funcionalidades no estén disponibles o se degraden.</p>
+    <p>Para más información sobre el uso de cookies o para revocar tu consentimiento, consulta nuestra sección de
+      configuración de privacidad o contacta con nuestro soporte técnico.</p>
+  </section>
+
+  <section id="aviso">
+    <h2>Aviso Legal</h2>
+    <p>WithoutFrame es una marca registrada y propiedad de WithoutFrame S.L., con domicilio fiscal en Calle Nueva 123,
+      Málaga, España. CIF: X0000000X. Todos los derechos sobre el contenido, marca, diseño y funcionamiento del sitio
+      están reservados.</p>
+    <p>El acceso a la plataforma implica la aceptación plena de este aviso legal. Nos reservamos el derecho a modificar,
+      limitar o cancelar el acceso al sitio en cualquier momento y sin previo aviso.</p>
+    <p>WithoutFrame no se responsabiliza por el mal uso del sitio, interrupciones del servicio o daños derivados del uso
+      de información publicada por terceros. Los usuarios son responsables del contenido que suban o compartan, y
+      deberán garantizar que poseen los derechos de uso correspondientes.</p>
+    <p>Para cuestiones legales, puedes contactarnos a través del correo <strong>withoutframe10&#64;gmail.com</strong> o
+      mediante notificación escrita a nuestra sede legal.</p>
+  </section>
+
+</ion-content>

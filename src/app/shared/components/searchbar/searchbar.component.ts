@@ -8,6 +8,7 @@ import { ArtistaDetalleComponent } from '../../components/artista-detalle/artist
 import { ModalController } from '@ionic/angular';
 import { CuadroDetalleComponent } from '../cuadro-detalle/cuadro-detalle.component';
 import { EventoDetalleComponent } from '../evento-detalle/evento-detalle.component';
+import { environment } from 'src/environments/environment.prod';
 
 
 @Component({
@@ -19,6 +20,8 @@ import { EventoDetalleComponent } from '../evento-detalle/evento-detalle.compone
 })
 export class SearchBarComponent implements OnInit {
   @Input() modo: 'eventos' | 'gallery' = 'gallery';
+
+  private apiUrl = environment.apiUrl;
 
   servicio = inject(CuadroService);
   modalCtrl = inject(ModalController);
@@ -121,14 +124,14 @@ export class SearchBarComponent implements OnInit {
     let endpoint = '';
 
     if (this.modo === 'eventos') {
-      endpoint = `http://localhost:5000/buscar/eventos?q=${this.query}`;
+      endpoint = `${this.apiUrl}/buscar/eventos?q=${this.query}`;
     } else {
       switch (this.segmentValue) {
         case 'cuadros':
-          endpoint = `http://localhost:5000/buscar/cuadros?q=${this.query}`;
+          endpoint = `${this.apiUrl}/buscar/cuadros?q=${this.query}`;
           break;
         case 'artistas':
-          endpoint = `http://localhost:5000/buscar/artistas?q=${this.query}`;
+          endpoint = `${this.apiUrl}/buscar/artistas?q=${this.query}`;
           break;
       }
     }
